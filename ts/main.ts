@@ -1,4 +1,5 @@
 import csv from 'csvtojson';
+import JsBarcode from 'jsbarcode';
 
 const input: HTMLInputElement = document.querySelector('input[type="file"]');
 const main: HTMLElement = document.querySelector('main');
@@ -15,6 +16,7 @@ function handleChange({ target }: HTMLInputEvent) {
             .then((result: LabelInformation[]) => result);
 
         main.innerHTML = labels.map(getLabelHtml).join('');
+        JsBarcode(".barcode").init();
     };
     reader.readAsText(file);
 }
@@ -22,7 +24,11 @@ function handleChange({ target }: HTMLInputEvent) {
 function getLabelHtml({ name, barcode, price }: LabelInformation): string {
     return `
         <article>
-            <span>${barcode}</span>
+            <svg class="barcode"
+                jsbarcode-value="${barcode}"
+                jsbarcode-textmargin="0"
+                jsbarcode-fontoptions="bold">
+            </svg>
             <p class="name">${name}</p>
             <p class="price">${formatter.format(parseInt(price, 10))}</p>
         </article>
