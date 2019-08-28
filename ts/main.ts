@@ -16,21 +16,24 @@ function handleChange({ target }: HTMLInputEvent) {
             .then((result: LabelInformation[]) => result);
 
         main.innerHTML = labels.map(getLabelHtml).join('');
-        JsBarcode(".barcode").init();
+        JsBarcode('.barcode').init();
     };
     reader.readAsText(file);
 }
 
 function getLabelHtml({ name, barcode, price }: LabelInformation): string {
+    const priceNumber = parseInt(price, 10);
     return `
         <article>
             <svg class="barcode"
+                jsbarcode-background="transparent"
+                jsbarcode-height="60"
                 jsbarcode-value="${barcode}"
                 jsbarcode-textmargin="0"
                 jsbarcode-fontoptions="bold">
             </svg>
             <p class="name">${name}</p>
-            <p class="price">${formatter.format(parseInt(price, 10))}</p>
+            <p class="price">${formatter.format(priceNumber)}</p>
         </article>
     `;
 }
@@ -38,7 +41,7 @@ function getLabelHtml({ name, barcode, price }: LabelInformation): string {
 const formatter = new Intl.NumberFormat('es-CR', {
     style: 'currency',
     currency: 'CRC',
-    minimumFractionDigits: 2
+    minimumFractionDigits: 0
 });
 
 // MODELS
