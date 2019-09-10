@@ -1,6 +1,6 @@
 :root {
-    --label-width: 5cm;
-    --label-height: 3cm;
+    --label-width: 6cm;
+    --label-height: 3.5cm;
     --main-width: calc(var(--label-width) * 4);
 }
 
@@ -54,16 +54,15 @@ article p {
 }
 
 .name {
-    font-size: 0.75rem;
-    overflow: hidden;
+    font-size: 1.15rem;
     text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
+    margin-bottom: 0.25rem;
 }
 
 .price {
+    /* font-family: Monaco; */
     font-weight: bold;
-    font-size: 1.25rem;
+    font-size: 2rem;
 }
 
 .wrapper {

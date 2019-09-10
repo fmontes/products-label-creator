@@ -5,16 +5,17 @@
     "main": "index.js",
     "scripts": {
         "start": "parcel index.html",
+        "build": "parcel build index.html",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "cssnano": "^4.1.10",
         "typescript": "^3.5.3"
     },
     "dependencies": {
-        "csvtojson": "^2.0.10",
         "jsbarcode": "^3.11.0"
     }
 }
